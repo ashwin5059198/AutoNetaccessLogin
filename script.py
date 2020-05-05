@@ -1,25 +1,29 @@
 # import necessary libraries
 from selenium.webdriver import Chrome, ChromeOptions
 import requests
-from pynotifier import Notification
+from win10toast import ToastNotifier
 
 
-# function for toast notifications
+# -------------------------------------------------------------------------
+
+USERNAME = ''
+PASSWORD = ''
+NOTIFICATION_ICON_PATH = ''
+
+# -------------------------------------------------------------------------
+
+
 def notify(message):
-    Notification(
-        title="Netaccess Authorisation Alert",
-        description=message,
-        icon_path="E:\Projects\Python\chat_over_lan\images\logo.ico",
-        urgency=Notification.URGENCY_CRITICAL,
-        duration=5
-        ).send()
+    n = ToastNotifier()
+    n.show_toast("Netaccess Authorisation Alert", message, duration = 5,
+        icon_path=NOTIFICATION_ICON_PATH)
 
 
 class AutoLogin:
     def __init__(self):
         self.url = "https://netaccess.iitm.ac.in/account/login"
-        self.USR_NAME = "enter your username here"
-        self.USR_PWD = 'enter your password here'
+        self.USR_NAME = USERNAME
+        self.USR_PWD = PASSWORD
 
     def login(self):
         # notify commencement of login
