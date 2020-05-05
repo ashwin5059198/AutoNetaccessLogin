@@ -84,7 +84,7 @@ class AutoLogin:
                 notify("Unable to connect to Netaccess, manual authorisation is recommended")
                 quit(0)
         except Exception as e:
-            print(e)
+            # print(e)
             notify("Unable to connect to Netaccess, manual authorisation is recommended")
             quit(0)
 
